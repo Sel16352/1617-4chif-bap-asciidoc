@@ -1,3 +1,7 @@
+ifndef::imagesoutdir[:imagesoutdir: ../../../target/asciidoc/images]
+ifndef::imagesdir[:imagesdir: ../../../target/asciidoc/images]
+ifndef::srcmainjavadir[:srcmainjavadir: ../java]
+ifndef::srctestjavadir[:srctestjavadir: ../../test/java]
 The Article Title
 =================
 Author's Name <authors@email.address>
@@ -25,7 +29,7 @@ and footnotes.
 
 [plantuml,hugo,png]
 ----
-class hugo
+class hugo2
 ----
 
 
