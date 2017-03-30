@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  build:
+    extends:
+      file: common-stages.yml
+      service: base_stage
+    command: sh -c "./mvnw -Dmaven.repo.local=/root/.m2 ${MAVEN_PROXY_SETTINGS} -Dartifactory.repository.url=${ARTIFACTORY_CONTEXT_URL} -Dartifactory.deployer.username=${ARTIFACTORY_DEPLOYER_USERNAME} -Dartifactory.deployer.password=${ARTIFACTORY_DEPLOYER_PASSWORD} help:effective-pom clean install "
+  deploy:
+    extends:
+      file: common-stages.yml
+      service: base_stage
+    command: sh -c "./mvnw -Dmaven.repo.local=/root/.m2 ${MAVEN_PROXY_SETTINGS} -Dartifactory.repository.url=${ARTIFACTORY_CONTEXT_URL} -Dartifactory.deployer.username=${ARTIFACTORY_DEPLOYER_USERNAME} -Dartifactory.deployer.password=${ARTIFACTORY_DEPLOYER_PASSWORD} deploy"
+
+volumes:
+  dot_m2:
+    external: true

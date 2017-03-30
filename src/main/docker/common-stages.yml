@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  base_stage:
+    image: asciidoctor/docker-asciidoctor
+    volumes:
+      - ${PROJECT_DIR}:/project
+      - dot_m2:/root/.m2
+    working_dir: "/project"
+    environment:
+      - MAVEN_PROXY_SETTINGS
+      - ARTIFACTORY_CONTEXT_URL
+      - ARTIFACTORY_DEPLOYER_USERNAME
+      - ARTIFACTORY_DEPLOYER_PASSWORD
+      - MAVEN_OPTS
+      - SONAR_HOST_URL
+    network_mode: host
